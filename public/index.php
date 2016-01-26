@@ -1,16 +1,15 @@
 <?php
-/**
- * @author Sławomir Żytko <slawek@amsterdam-standard.pl>
- * @copyright (c) 2014, Amsterdam Standard
- */
+
+define('APP_ROOT', dirname(__DIR__));
+require_once APP_ROOT . '/vendor/autoload.php';
+
 error_reporting(E_ALL);
-define('APP_ROOT', dirname(dirname(__FILE__)));
+ini_set('display_errors', '1');
 
+$config = new \Phalcon\Config(require_once APP_ROOT . '/app/config/config.php');
+$di = new \Phalcon\Di\FactoryDefault();
+$app = new \Vegas\Mvc\Application($di, $config);
+$app->setApplicationDirectory(APP_ROOT);
+$app->setDefaultModule($config->application->defaultModule);
 
-require APP_ROOT . '/vendor/autoload.php';
-require APP_ROOT . '/app/Bootstrap.php';
-$config = require APP_ROOT . '/app/config/config.php';
-
-$bootstrap = new \Bootstrap(new \Phalcon\Config($config));
-
-echo $bootstrap->setup()->run();
+$app->handle();
