@@ -1,6 +1,11 @@
 {{ partial('modules/Home/View/Frontend/Index/partials/header') }}
 
 <div class="row marketing">
+    <div class="col-lg-12">
+        <p>
+            {{ getDI().get('Home\Component\Table') }}
+        </p>
+    </div>
     <div class="col-lg-6">
         <h4>Subheading</h4>
         <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>

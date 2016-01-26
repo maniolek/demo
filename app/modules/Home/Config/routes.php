@@ -6,7 +6,7 @@ $router->add('/', [
     'module' => 'Home',
     'controller' => 'Frontend\Index',
     'action' => 'index'
-]);
+])->setName('root');
 
 $router->add('/test', [
     'module' => 'Home',
